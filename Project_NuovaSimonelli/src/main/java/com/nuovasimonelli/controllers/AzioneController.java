@@ -15,6 +15,7 @@ import com.nuovasimonelli.repositories.AzioneRepository;
 @RestController
 @RequestMapping(value="/azione")
 public class AzioneController {
+	 
 	
 @Autowired
 private final AzioneRepository azioneRepository;
