@@ -31,7 +31,7 @@ public List<Azione> getAllAzione(){
 
 @PostMapping(value= {"/add","/add/"})
 public ResponseEntity<String> addAzione(@RequestBody Azione azione) {
-	if(azioneRepository.existsByNome(azione.getNome()) && azioneRepository.existsById(azione.getId())) {
+	if(azioneRepository.existsByNome(azione.getNome()) || azioneRepository.existsById(azione.getId())) {
 		return ResponseEntity.status(409).body("Conflict");
 	}else {
 		azioneRepository.save(azione);
