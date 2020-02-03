@@ -3,6 +3,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="COL_COMPONENTE_AZIONE")
@@ -13,14 +14,15 @@ public class ComponenteAzione {
 	@Column(name="CODICE_AZIONE")
 	private int codiceAzione;
 	@Column(name="FLAG_DISCRIMINANTE")
-	private char flagDiscriminante;
+	@Size(min=1,max=1)
+	private String flagDiscriminante;
 	@Column(name="CODICE_MACROGRUPPO")
 	private int codiceMacrogruppo;
 	
 	public ComponenteAzione() {
 		
 	}
-	public ComponenteAzione(int codiceComponente ,int codiceAzione ,char flagDiscriminante,int codiceMacrogruppo ) {
+	public ComponenteAzione(int codiceComponente ,int codiceAzione ,String flagDiscriminante,int codiceMacrogruppo ) {
 		this.codiceComponente=codiceComponente;
 		this.codiceAzione=codiceAzione;
 		this.flagDiscriminante=flagDiscriminante;
@@ -38,10 +40,10 @@ public class ComponenteAzione {
 	public void setCodiceAzione(int codiceAzione) {
 		this.codiceAzione = codiceAzione;
 	}
-	public char getFlagDiscriminante() {
+	public String getFlagDiscriminante() {
 		return flagDiscriminante;
 	}
-	public void setFlagDiscriminante(char flagDiscriminante) {
+	public void setFlagDiscriminante(String flagDiscriminante) {
 		this.flagDiscriminante = flagDiscriminante;
 	}
 	public int getCodiceMacrogruppo() {

@@ -13,7 +13,7 @@ import com.nuovasimonelli.entities.ComponenteAzione;
 import com.nuovasimonelli.repositories.ComponenteAzioneRepository;
 
 @RestController
-@RequestMapping(value="/componenteAßzione")
+@RequestMapping(value="/componenteAzione")
 public class ComponenteAzioneController {
 	 
 	
@@ -31,7 +31,8 @@ public List<ComponenteAzione> getAllAzione(){
 
 @PostMapping(value= {"/add","/add/"})
 public ResponseEntity<String> addAzione(@RequestBody ComponenteAzione componenteAzione) {
-	if(componenteAzioneRepository.existsByCodiceComponenteAndAzione(componenteAzione.getCodiceComponente(), componenteAzione.getCodiceAzione())) {
+	ComponenteAzione cc = componenteAzioneRepository.findByCodiceComponente(componenteAzione.getCodiceComponente()).get();
+	if(cc!=null && cc.getCodiceAzione()==componenteAzione.getCodiceAzione()) {
 		return ResponseEntity.status(409).body("Conflict");
 	}else {
 		componenteAzioneRepository.save(componenteAzione);

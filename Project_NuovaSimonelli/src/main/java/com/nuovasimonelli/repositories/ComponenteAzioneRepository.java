@@ -8,5 +8,5 @@ import com.nuovasimonelli.entities.ComponenteAzione;
 
 public interface ComponenteAzioneRepository extends JpaRepository<ComponenteAzione,Integer>{
 	Optional<ComponenteAzione> findByCodiceComponente(int codiceComponente);
-	Boolean existsByCodiceComponenteAndAzione(int codiceComponente, int codiceAzione);
+	Boolean existsByCodiceComponente(int codiceComponente);
 }

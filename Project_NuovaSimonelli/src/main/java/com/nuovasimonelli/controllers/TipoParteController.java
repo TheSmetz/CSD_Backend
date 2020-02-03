@@ -31,7 +31,7 @@ public class TipoParteController{
 	
 	@PostMapping(value= {"/add","/add/"})
 	public ResponseEntity<String> addTipoParte(@RequestBody TipoParte tipoParte) {
-		if(tipoParteRepository.existsByNome(tipoParte.getNome()) && tipoParteRepository.existsById(tipoParte.getId())) {
+		if(tipoParteRepository.existsByNome(tipoParte.getNome()) || tipoParteRepository.existsById(tipoParte.getId())) {
 			return ResponseEntity.status(409).body("Conflict");
 		}else {
 			tipoParteRepository.save(tipoParte);
