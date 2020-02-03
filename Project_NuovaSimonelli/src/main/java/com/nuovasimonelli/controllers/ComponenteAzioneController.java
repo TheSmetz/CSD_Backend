@@ -13,7 +13,7 @@ import com.nuovasimonelli.entities.ComponenteAzione;
 import com.nuovasimonelli.repositories.ComponenteAzioneRepository;
 
 @RestController
-@RequestMapping(value="/azione")
+@RequestMapping(value="/componenteAßzione")
 public class ComponenteAzioneController {
 	 
 	
