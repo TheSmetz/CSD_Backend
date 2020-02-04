@@ -55,7 +55,4 @@ public void setReworks(boolean reworks) {
 public String toString() {
 	return "Azione [id=" + id + ", nome=" + nome + ", viewNote=" + viewNote + ", reworks=" + reworks + "]";
 }
-
-
-
 }
