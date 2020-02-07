@@ -1,5 +1,6 @@
 package com.nuovasimonelli.entities;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -7,7 +8,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="COL_COMPONENTE_TIPO_MACCHINA")
 public class ComponenteTipoMacchina {
-	@Id
 	@Column(name="CODICE_COMPONENTE")
 	private int codiceComponente;
 	@Column(name="CODICE_TIPO_MACCHINA")
