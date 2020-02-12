@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nuovasimonelli.entities.Macchina;
@@ -24,8 +25,8 @@ public MacchinaController(MacchinaRepository macchinaRepository) {
 }
 
 @GetMapping(value= {"/",""})
-public Page<Macchina> getAllMacchina(){
-	PageRequest limit = PageRequest.of(0,10);
+public Page<Macchina> getAllMacchina(@RequestParam("a") int a,@RequestParam("b") int b){
+	PageRequest limit = PageRequest.of(a,b);
 	return macchinaRepository.findAll(limit);
 }
 
