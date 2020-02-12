@@ -1,17 +1,23 @@
 package com.nuovasimonelli.entities;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import com.nuovasimonelli.classes.ComponenteTipoMacchinaPrimaryKey;
+
 @Entity
+@IdClass(ComponenteTipoMacchinaPrimaryKey.class)
 @Table(name="COL_COMPONENTE_TIPO_MACCHINA")
 public class ComponenteTipoMacchina {
+	@Id
 	@Column(name="CODICE_COMPONENTE")
 	private int codiceComponente;
+	@Id
 	@Column(name="CODICE_TIPO_MACCHINA")
 	private int codiceTipoMacchina;
+	@Id
 	@Column(name="RICHIEDI_COMPONENTE")
 	private boolean richiediComponente;
 	

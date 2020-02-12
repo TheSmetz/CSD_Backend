@@ -13,23 +13,23 @@ import com.nuovasimonelli.entities.ComponenteTipoMacchina;
 import com.nuovasimonelli.repositories.ComponenteTipoMacchinaRepository;
 
 @RestController
-@RequestMapping(value="/codiceTipoMacchina")
+@RequestMapping(value="/componenteTipoMacchina")
 public class ComponenteTipoMacchinaController {	 	
 @Autowired
-private final ComponenteTipoMacchinaRepository codiceTipoMacchinaRepository;
+private final ComponenteTipoMacchinaRepository componenteTipoMacchinaRepository;
 
-public ComponenteTipoMacchinaController(ComponenteTipoMacchinaRepository codiceTipoMacchinaRepository) {
-	this.codiceTipoMacchinaRepository=codiceTipoMacchinaRepository;
+public ComponenteTipoMacchinaController(ComponenteTipoMacchinaRepository componenteTipoMacchinaRepository) {
+	this.componenteTipoMacchinaRepository=componenteTipoMacchinaRepository;
 }
 
 @GetMapping(value= {"/",""})
-public List<ComponenteTipoMacchina> getAllCodiceTipoMacchina(){
-	return codiceTipoMacchinaRepository.findAll();
+public List<ComponenteTipoMacchina> getAllComponenteTipoMacchina(){
+	return componenteTipoMacchinaRepository.findAll();
 }
 
 @PostMapping(value= {"/add","/add/"})
-public ResponseEntity<String> addCodiceTipoMacchina(@RequestBody ComponenteTipoMacchina codiceTipoMacchina) {
+public ResponseEntity<String> addComponenteTipoMacchina(@RequestBody ComponenteTipoMacchina componenteTipoMacchina) {
 	//Da controllare se mettere o meno condizioni
-	codiceTipoMacchinaRepository.save(codiceTipoMacchina);
+	componenteTipoMacchinaRepository.save(componenteTipoMacchina);
 	return ResponseEntity.ok("Successfully created");
 }}

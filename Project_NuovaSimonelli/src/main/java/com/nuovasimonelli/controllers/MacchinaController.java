@@ -1,7 +1,8 @@
 package com.nuovasimonelli.controllers;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,13 +24,17 @@ public MacchinaController(MacchinaRepository macchinaRepository) {
 }
 
 @GetMapping(value= {"/",""})
-public List<Macchina> getAllMacchina(){
-	return macchinaRepository.findAll();
+public Page<Macchina> getAllMacchina(){
+	PageRequest limit = PageRequest.of(0,10);
+	return macchinaRepository.findAll(limit);
 }
 
 @PostMapping(value= {"/add","/add/"})
 public ResponseEntity<String> addMacchina(@RequestBody Macchina macchina) {
-		//DA VEDERE SE AGGIUNGERE CONTROLLI
+	if(macchinaRepository.existsByCodiceProg(macchina.getCodiceProg())) {
+		return ResponseEntity.status(409).body("Conflict");
+	}else {
 		macchinaRepository.save(macchina);
 		return ResponseEntity.ok("Successfully created");
+	}
 }}
