@@ -1,12 +1,12 @@
 package com.nuovasimonelli.entities;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="COL_INTERVENTI")
@@ -32,16 +32,16 @@ public class Interventi {
 	private String notaAzione;
 	@Column(name="NOTA_COMPONENTE_AGAIN")
 	private String notaComponenteAgain;
-	@Column(name="DATA_COLLAUDO")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date dataCollaudo;
+	@Column(name="DATA_COLLAUDO",columnDefinition = "DATETIME")
+	@DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss.SSSX")
+	private LocalDateTime dataCollaudo;
 	
 	public Interventi() {
 	}
 	
 	public Interventi(int id,int codiceProgressivoMacchina,int codiceComponente,
 			int codiceDifetto,int codiceComponenteAgain,String notaComponente,String notaDifetto,
-			String notaAzione,String notaComponenteAgain,Date dataCollaudo, int codiceAzione) {
+			String notaAzione,String notaComponenteAgain,LocalDateTime  dataCollaudo, int codiceAzione) {
 		this.id=id;
 		this.codiceAzione=codiceAzione;
 		this.codiceComponente=codiceComponente;
@@ -135,11 +135,11 @@ public class Interventi {
 		this.notaComponenteAgain = notaComponenteAgain;
 	}
 
-	public Date getDataCollaudo() {
+	public LocalDateTime  getDataCollaudo() {
 		return dataCollaudo;
 	}
 
-	public void setDataCollaudo(Date dataCollaudo) {
+	public void setDataCollaudo(LocalDateTime  dataCollaudo) {
 		this.dataCollaudo = dataCollaudo;
 	}
 	

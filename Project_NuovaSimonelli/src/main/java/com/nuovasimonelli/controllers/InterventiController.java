@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nuovasimonelli.entities.Interventi;
@@ -22,10 +23,16 @@ public InterventiController(InterventiRepository interventiRepository) {
 	this.interventiRepository=interventiRepository;
 }
 
+
 @GetMapping(value= {"/",""})
-public List<Interventi> getAllInterventi(){
-	return interventiRepository.findAll();
+public List<Interventi> getAllInterventi(@RequestParam int a, int b){
+	return interventiRepository.findInterventiLimited(a, b );
 }
+
+//@GetMapping(value= {"/grafoAzioni","/grafoAzioni/"})
+//public List<Object[]> getNumeroAzioni(@RequestBody Object year){
+//	return interventiRepository.selectAzioneWithCounter(year);
+//}
 
 @PostMapping(value= {"/add","/add/"})
 public ResponseEntity<String> addInterventi(@RequestBody Interventi interventi) {

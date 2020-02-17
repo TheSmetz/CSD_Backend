@@ -1,18 +1,18 @@
 package com.nuovasimonelli.entities;
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name="Macchina")
+@Table(name="MACCHINA_POST_2013")
 public class Macchina {
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss.000 ")
+	@DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:ss.SSSX")
 	@Column(name="NumeroSerie")
 	private Integer numeroSerie;
 	@Column(name="CodiceCaricamento")
@@ -48,80 +48,80 @@ public class Macchina {
 	@Column(name="DifettositaA")
 	private String difettositaA;
 	@Column(name="InterventiA")
-	private String IntegererventiA;
+	private String interventiA;
 	@Column(name="TimeInitA")
-	private Date timeInitA;
+	private LocalDateTime timeInitA;
 	@Column(name="FirmaA")
 	private Integer firmaA;
 	@Column(name="TimeA")
-	private Date timeA;
+	private LocalDateTime timeA;
 	
 	@Column(name="DifettositaB")
 	private String difettositaB;
 	@Column(name="InterventiB")
-	private String IntegererventiB;
+	private String interventiB;
 	@Column(name="TimeInitB")
-	private Date timeInitB;
+	private LocalDateTime timeInitB;
 	@Column(name="FirmaB")
 	private Integer firmaB;
 	@Column(name="TimeB")
-	private Date timeB;
+	private LocalDateTime timeB;
 
 	@Column(name="DifettositaC")
 	private String difettositaC;
 	@Column(name="InterventiC")
-	private String IntegererventiC;
+	private String interventiC;
 	@Column(name="TimeInitC")
-	private Date timeInitC;
+	private LocalDateTime timeInitC;
 	@Column(name="FirmaC")
 	private Integer firmaC;
 	@Column(name="TimeC")
-	private Date timeC;
+	private LocalDateTime timeC;
 
 	@Column(name="DifettositaD")
 	private String difettositaD;
 	@Column(name="InterventiD")
-	private String IntegererventiD;
+	private String interventiD;
 	@Column(name="TimeInitD")
-	private Date timeInitD;
+	private LocalDateTime timeInitD;
 	@Column(name="FirmaD")
 	private Integer firmaD;
 	@Column(name="TimeD")
-	private Date timeD;
+	private LocalDateTime timeD;
 
 	@Column(name="DifettositaE")
 	private String difettositaE;
 	@Column(name="InterventiE")
-	private String IntegererventiE;
+	private String interventiE;
 	@Column(name="TimeInitE")
-	private Date timeInitE;
+	private LocalDateTime timeInitE;
 	@Column(name="FirmaE")
 	private Integer firmaE;
 	@Column(name="TimeE")
-	private Date timeE;
+	private LocalDateTime timeE;
 	
 	@Column(name="FirmaRD")
 	private Integer firmaRD;
 	@Column(name="TimeRD")
-	private Date timeRD;
+	private LocalDateTime timeRD;
 	@Column(name="FirmaET")
 	private Integer firmaET;
 	@Column(name="TimeET")
-	private Date timeET;
+	private LocalDateTime timeET;
 	
 	@Column(name="DifettositaF")
 	private String difettositaF;
 	@Column(name="InterventiF")
-	private String IntegererventiF;
+	private String interventiF;
 	@Column(name="TimeInitF")
-	private Date timeInitF;
+	private LocalDateTime timeInitF;
 	@Column(name="FirmaF")
 	private Integer firmaF;
 	@Column(name="TimeF")
-	private Date timeF;
+	private LocalDateTime timeF;
 	
 	@Column(name="DataVendita")
-	private Date dataVendita;
+	private LocalDateTime dataVendita;
 	@Column(name="Prezzo")
 	private Integer prezzo;
 	@Column(name="Cliente")
@@ -178,7 +178,7 @@ public class Macchina {
 	@Column(name="OrdineProduzione")
 	private Integer ordineProduzione;
 	@Column(name="DataChiusura")
-	private Date dataChiusura;
+	private LocalDateTime dataChiusura;
 	@Column(name="LineaChiusura")
 	private Integer lineaChiusura;
 	@Column(name="PreMontaggioEseguito",columnDefinition = "BIT")
@@ -186,9 +186,9 @@ public class Macchina {
 	@Column(name="CaldaiaEseguita",columnDefinition = "BIT")
 	private Boolean caldaiaEseguita;
 	@Column(name="DataConsegna")
-	private Date dataConsegna;
+	private LocalDateTime dataConsegna;
 	@Column(name="DataInserimento")
-	private Date dataInserimento;
+	private LocalDateTime dataInserimento;
 	
 	@Column(name="PROPOSTA_MODIFICA")
 	private Integer propostaModifica;
@@ -216,7 +216,7 @@ public class Macchina {
 	@Column(name="IsInCentroLogistico",columnDefinition = "BIT")
 	private Boolean isInCentroLogistico;
 	@Column(name="DataSpostamentoCentroLogistico")
-	private Date dataSpostamentoCentroLogistico;
+	private LocalDateTime dataSpostamentoCentroLogistico;
 	@Column(name="IsInSpedizione",columnDefinition = "BIT")
 	private Boolean isInSpedizione;
 
@@ -236,21 +236,21 @@ public class Macchina {
 	public Macchina(Integer numeroSerie, String codiceCaricamento, String colore, String tensione, String approvazione,
 			String optionals, String alimentazione, String note, String centralinaElettronica, String releaseCE,
 			String centralinaAutolivello, String releaseCA, String dosatoreVolumetrico, String pompanteVolumetrico,
-			Integer linea, String difettositaA, String IntegererventiA, Date timeInitA, Integer firmaA, Date timeA,
-			String difettositaB, String IntegererventiB, Date timeInitB, Integer firmaB, Date timeB, String difettositaC,
-			String IntegererventiC, Date timeInitC, Integer firmaC, Date timeC, String difettositaD, String IntegererventiD,
-			Date timeInitD, Integer firmaD, Date timeD, String difettositaE, String IntegererventiE, Date timeInitE, Integer firmaE,
-			Date timeE, Integer firmaRD, Date timeRD, Integer firmaET, Date timeET, String difettositaF, String IntegererventiF,
-			Date timeInitF, Integer firmaF, Date timeF, Date dataVendita, Integer prezzo, String cliente,
+			Integer linea, String difettositaA, String interventiA, LocalDateTime timeInitA, Integer firmaA, LocalDateTime timeA,
+			String difettositaB, String interventiB, LocalDateTime timeInitB, Integer firmaB, LocalDateTime timeB, String difettositaC,
+			String interventiC, LocalDateTime timeInitC, Integer firmaC, LocalDateTime timeC, String difettositaD, String interventiD,
+			LocalDateTime timeInitD, Integer firmaD, LocalDateTime timeD, String difettositaE, String interventiE, LocalDateTime timeInitE, Integer firmaE,
+			LocalDateTime timeE, Integer firmaRD, LocalDateTime timeRD, Integer firmaET, LocalDateTime timeET, String difettositaF, String interventiF,
+			LocalDateTime timeInitF, Integer firmaF, LocalDateTime timeF, LocalDateTime dataVendita, Integer prezzo, String cliente,
 			String schedaCollaudo, String tag, String descrizione, String pianoLavorazione, String personalizzata,
 			Integer priorita, String gruppi, Integer codiceProg, String matricolaCaldaia, String noteDiLinea, Boolean isFinita,
 			Integer ordineMacchina, Boolean isCollaudoCaldaia, String rigaOrdine, Integer tempoTrascorsoA, Integer tempoTrascorsoB,
 			Integer tempoTrascorsoC, Integer tempoTrascorsoD, Integer tempoTrascorsoE, Integer tempoTrascorsoF, Boolean isSospesa,
-			Integer ordine, Integer ordineProduzione, Date dataChiusura, Integer lineaChiusura, Boolean preMontaggioEseguito,
-			Boolean caldaiaEseguita, Date dataConsegna, Date dataInserimento, Integer propostaModifica,
+			Integer ordine, Integer ordineProduzione, LocalDateTime dataChiusura, Integer lineaChiusura, Boolean preMontaggioEseguito,
+			Boolean caldaiaEseguita, LocalDateTime dataConsegna, LocalDateTime dataInserimento, Integer propostaModifica,
 			Integer revisioneAttuazione, String attuazione, Integer utenteAttuazione, String numeroPersonalizzazioneAttuato,
 			Integer cadenzaA, Integer cadenzaB, Integer cadenzaC, Integer cadenzaD, Integer cadenzaE, Integer cadenzaF,
-			Boolean isInCentroLogistico, Date dataSpostamentoCentroLogistico, Boolean isInSpedizione, String release3,
+			Boolean isInCentroLogistico, LocalDateTime dataSpostamentoCentroLogistico, Boolean isInSpedizione, String release3,
 			String numeroLottoPompante, Integer causaleComponente) {
 		super();
 		this.numeroSerie = numeroSerie;
@@ -269,27 +269,27 @@ public class Macchina {
 		this.pompanteVolumetrico = pompanteVolumetrico;
 		this.linea = linea;
 		this.difettositaA = difettositaA;
-		this.IntegererventiA = IntegererventiA;
+		this.interventiA = interventiA;
 		this.timeInitA = timeInitA;
 		this.firmaA = firmaA;
 		this.timeA = timeA;
 		this.difettositaB = difettositaB;
-		this.IntegererventiB = IntegererventiB;
+		this.interventiB = interventiB;
 		this.timeInitB = timeInitB;
 		this.firmaB = firmaB;
 		this.timeB = timeB;
 		this.difettositaC = difettositaC;
-		this.IntegererventiC = IntegererventiC;
+		this.interventiC = interventiC;
 		this.timeInitC = timeInitC;
 		this.firmaC = firmaC;
 		this.timeC = timeC;
 		this.difettositaD = difettositaD;
-		this.IntegererventiD = IntegererventiD;
+		this.interventiD = interventiD;
 		this.timeInitD = timeInitD;
 		this.firmaD = firmaD;
 		this.timeD = timeD;
 		this.difettositaE = difettositaE;
-		this.IntegererventiE = IntegererventiE;
+		this.interventiE = interventiE;
 		this.timeInitE = timeInitE;
 		this.firmaE = firmaE;
 		this.timeE = timeE;
@@ -298,7 +298,7 @@ public class Macchina {
 		this.firmaET = firmaET;
 		this.timeET = timeET;
 		this.difettositaF = difettositaF;
-		this.IntegererventiF = IntegererventiF;
+		this.interventiF = interventiF;
 		this.timeInitF = timeInitF;
 		this.firmaF = firmaF;
 		this.timeF = timeF;
@@ -484,18 +484,18 @@ public class Macchina {
 	}
 
 	public String getInterventiA() {
-		return IntegererventiA;
+		return interventiA;
 	}
 
-	public void setInterventiA(String IntegererventiA) {
-		this.IntegererventiA = IntegererventiA;
+	public void setInterventiA(String interventiA) {
+		this.interventiA = interventiA;
 	}
 
-	public Date getTimeInitA() {
+	public LocalDateTime getTimeInitA() {
 		return timeInitA;
 	}
 
-	public void setTimeInitA(Date timeInitA) {
+	public void setTimeInitA(LocalDateTime timeInitA) {
 		this.timeInitA = timeInitA;
 	}
 
@@ -507,11 +507,11 @@ public class Macchina {
 		this.firmaA = firmaA;
 	}
 
-	public Date getTimeA() {
+	public LocalDateTime getTimeA() {
 		return timeA;
 	}
 
-	public void setTimeA(Date timeA) {
+	public void setTimeA(LocalDateTime timeA) {
 		this.timeA = timeA;
 	}
 
@@ -524,18 +524,18 @@ public class Macchina {
 	}
 
 	public String getInterventiB() {
-		return IntegererventiB;
+		return interventiB;
 	}
 
-	public void setInterventiB(String IntegererventiB) {
-		this.IntegererventiB = IntegererventiB;
+	public void setInterventiB(String interventiB) {
+		this.interventiB = interventiB;
 	}
 
-	public Date getTimeInitB() {
+	public LocalDateTime getTimeInitB() {
 		return timeInitB;
 	}
 
-	public void setTimeInitB(Date timeInitB) {
+	public void setTimeInitB(LocalDateTime timeInitB) {
 		this.timeInitB = timeInitB;
 	}
 
@@ -547,11 +547,11 @@ public class Macchina {
 		this.firmaB = firmaB;
 	}
 
-	public Date getTimeB() {
+	public LocalDateTime getTimeB() {
 		return timeB;
 	}
 
-	public void setTimeB(Date timeB) {
+	public void setTimeB(LocalDateTime timeB) {
 		this.timeB = timeB;
 	}
 
@@ -564,18 +564,18 @@ public class Macchina {
 	}
 
 	public String getInterventiC() {
-		return IntegererventiC;
+		return interventiC;
 	}
 
-	public void setInterventiC(String IntegererventiC) {
-		this.IntegererventiC = IntegererventiC;
+	public void setInterventiC(String interventiC) {
+		this.interventiC = interventiC;
 	}
 
-	public Date getTimeInitC() {
+	public LocalDateTime getTimeInitC() {
 		return timeInitC;
 	}
 
-	public void setTimeInitC(Date timeInitC) {
+	public void setTimeInitC(LocalDateTime timeInitC) {
 		this.timeInitC = timeInitC;
 	}
 
@@ -587,11 +587,11 @@ public class Macchina {
 		this.firmaC = firmaC;
 	}
 
-	public Date getTimeC() {
+	public LocalDateTime getTimeC() {
 		return timeC;
 	}
 
-	public void setTimeC(Date timeC) {
+	public void setTimeC(LocalDateTime timeC) {
 		this.timeC = timeC;
 	}
 
@@ -604,18 +604,18 @@ public class Macchina {
 	}
 
 	public String getInterventiD() {
-		return IntegererventiD;
+		return interventiD;
 	}
 
-	public void setInterventiD(String IntegererventiD) {
-		this.IntegererventiD = IntegererventiD;
+	public void setInterventiD(String interventiD) {
+		this.interventiD = interventiD;
 	}
 
-	public Date getTimeInitD() {
+	public LocalDateTime getTimeInitD() {
 		return timeInitD;
 	}
 
-	public void setTimeInitD(Date timeInitD) {
+	public void setTimeInitD(LocalDateTime timeInitD) {
 		this.timeInitD = timeInitD;
 	}
 
@@ -627,11 +627,11 @@ public class Macchina {
 		this.firmaD = firmaD;
 	}
 
-	public Date getTimeD() {
+	public LocalDateTime getTimeD() {
 		return timeD;
 	}
 
-	public void setTimeD(Date timeD) {
+	public void setTimeD(LocalDateTime timeD) {
 		this.timeD = timeD;
 	}
 
@@ -644,18 +644,18 @@ public class Macchina {
 	}
 
 	public String getInterventiE() {
-		return IntegererventiE;
+		return interventiE;
 	}
 
-	public void setInterventiE(String IntegererventiE) {
-		this.IntegererventiE = IntegererventiE;
+	public void setInterventiE(String interventiE) {
+		this.interventiE = interventiE;
 	}
 
-	public Date getTimeInitE() {
+	public LocalDateTime getTimeInitE() {
 		return timeInitE;
 	}
 
-	public void setTimeInitE(Date timeInitE) {
+	public void setTimeInitE(LocalDateTime timeInitE) {
 		this.timeInitE = timeInitE;
 	}
 
@@ -667,11 +667,11 @@ public class Macchina {
 		this.firmaE = firmaE;
 	}
 
-	public Date getTimeE() {
+	public LocalDateTime getTimeE() {
 		return timeE;
 	}
 
-	public void setTimeE(Date timeE) {
+	public void setTimeE(LocalDateTime timeE) {
 		this.timeE = timeE;
 	}
 
@@ -683,11 +683,11 @@ public class Macchina {
 		this.firmaRD = firmaRD;
 	}
 
-	public Date getTimeRD() {
+	public LocalDateTime getTimeRD() {
 		return timeRD;
 	}
 
-	public void setTimeRD(Date timeRD) {
+	public void setTimeRD(LocalDateTime timeRD) {
 		this.timeRD = timeRD;
 	}
 
@@ -699,11 +699,11 @@ public class Macchina {
 		this.firmaET = firmaET;
 	}
 
-	public Date getTimeET() {
+	public LocalDateTime getTimeET() {
 		return timeET;
 	}
 
-	public void setTimeET(Date timeET) {
+	public void setTimeET(LocalDateTime timeET) {
 		this.timeET = timeET;
 	}
 
@@ -716,18 +716,18 @@ public class Macchina {
 	}
 
 	public String getInterventiF() {
-		return IntegererventiF;
+		return interventiF;
 	}
 
-	public void setInterventiF(String IntegererventiF) {
-		this.IntegererventiF = IntegererventiF;
+	public void setInterventiF(String interventiF) {
+		this.interventiF = interventiF;
 	}
 
-	public Date getTimeInitF() {
+	public LocalDateTime getTimeInitF() {
 		return timeInitF;
 	}
 
-	public void setTimeInitF(Date timeInitF) {
+	public void setTimeInitF(LocalDateTime timeInitF) {
 		this.timeInitF = timeInitF;
 	}
 
@@ -739,19 +739,19 @@ public class Macchina {
 		this.firmaF = firmaF;
 	}
 
-	public Date getTimeF() {
+	public LocalDateTime getTimeF() {
 		return timeF;
 	}
 
-	public void setTimeF(Date timeF) {
+	public void setTimeF(LocalDateTime timeF) {
 		this.timeF = timeF;
 	}
 
-	public Date getDataVendita() {
+	public LocalDateTime getDataVendita() {
 		return dataVendita;
 	}
 
-	public void setDataVendita(Date dataVendita) {
+	public void setDataVendita(LocalDateTime dataVendita) {
 		this.dataVendita = dataVendita;
 	}
 
@@ -955,11 +955,11 @@ public class Macchina {
 		this.ordineProduzione = ordineProduzione;
 	}
 
-	public Date getDataChiusura() {
+	public LocalDateTime getDataChiusura() {
 		return dataChiusura;
 	}
 
-	public void setDataChiusura(Date dataChiusura) {
+	public void setDataChiusura(LocalDateTime dataChiusura) {
 		this.dataChiusura = dataChiusura;
 	}
 
@@ -987,19 +987,19 @@ public class Macchina {
 		this.caldaiaEseguita = caldaiaEseguita;
 	}
 
-	public Date getDataConsegna() {
+	public LocalDateTime getDataConsegna() {
 		return dataConsegna;
 	}
 
-	public void setDataConsegna(Date dataConsegna) {
+	public void setDataConsegna(LocalDateTime dataConsegna) {
 		this.dataConsegna = dataConsegna;
 	}
 
-	public Date getDataInserimento() {
+	public LocalDateTime getDataInserimento() {
 		return dataInserimento;
 	}
 
-	public void setDataInserimento(Date dataInserimento) {
+	public void setDataInserimento(LocalDateTime dataInserimento) {
 		this.dataInserimento = dataInserimento;
 	}
 
@@ -1099,11 +1099,11 @@ public class Macchina {
 		this.isInCentroLogistico = isInCentroLogistico;
 	}
 
-	public Date getDataSpostamentoCentroLogistico() {
+	public LocalDateTime getDataSpostamentoCentroLogistico() {
 		return dataSpostamentoCentroLogistico;
 	}
 
-	public void setDataSpostamentoCentroLogistico(Date dataSpostamentoCentroLogistico) {
+	public void setDataSpostamentoCentroLogistico(LocalDateTime dataSpostamentoCentroLogistico) {
 		this.dataSpostamentoCentroLogistico = dataSpostamentoCentroLogistico;
 	}
 
