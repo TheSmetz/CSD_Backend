@@ -34,7 +34,7 @@ public interface InterventiRepository extends JpaRepository<Interventi,Integer>{
 			"ON QUERYDIFETTO.CODICE_DIFETTO = COL_DIFETTO.ID\r\n" + 
 			"ORDER BY TOTALE DESC",nativeQuery=true)
 	public List<DifettiComponenti> findDifettiComponenti();
-	
-	@Query(value="",nativeQuery=true)
-	public List<TipiDifettiComponenti> findTipiDifettiComponenti();
+//	
+//	@Query(value="",nativeQuery=true)
+//	public List<TipiDifettiComponenti> findTipiDifettiComponenti();
 }
