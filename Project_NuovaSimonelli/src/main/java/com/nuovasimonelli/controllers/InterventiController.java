@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nuovasimonelli.entities.Interventi;
+import com.nuovasimonelli.interfaces.DifettiComponenti;
 import com.nuovasimonelli.repositories.InterventiRepository;
 
 @RestController
@@ -26,13 +27,13 @@ public InterventiController(InterventiRepository interventiRepository) {
 
 @GetMapping(value= {"/",""})
 public List<Interventi> getAllInterventi(@RequestParam int a, int b){
-	return interventiRepository.findInterventiLimited(a, b );
+	return interventiRepository.findInterventiLimited(a, b);
 }
 
-//@GetMapping(value= {"/grafoAzioni","/grafoAzioni/"})
-//public List<Object[]> getNumeroAzioni(@RequestBody Object year){
-//	return interventiRepository.selectAzioneWithCounter(year);
-//}
+@GetMapping(value= {"/difettiComponenti","/difettiComponenti/"})
+public List<DifettiComponenti> getNumeroAzioni(){
+	return interventiRepository.findDifettiComponenti();
+}
 
 @PostMapping(value= {"/add","/add/"})
 public ResponseEntity<String> addInterventi(@RequestBody Interventi interventi) {
