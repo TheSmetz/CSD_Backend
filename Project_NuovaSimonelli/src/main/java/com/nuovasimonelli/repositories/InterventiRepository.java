@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.nuovasimonelli.entities.Interventi;
 import com.nuovasimonelli.interfaces.ConteggioComponenti;
 import com.nuovasimonelli.interfaces.DifettiComponenti;
+import com.nuovasimonelli.interfaces.TipiDifettiComponenti;
 	
 public interface InterventiRepository extends JpaRepository<Interventi,Integer>{
 	Optional<Interventi> findById(int id);
@@ -33,4 +34,7 @@ public interface InterventiRepository extends JpaRepository<Interventi,Integer>{
 			"ON QUERYDIFETTO.CODICE_DIFETTO = COL_DIFETTO.ID\r\n" + 
 			"ORDER BY TOTALE DESC",nativeQuery=true)
 	public List<DifettiComponenti> findDifettiComponenti();
+	
+	@Query(value="",nativeQuery=true)
+	public List<TipiDifettiComponenti> findTipiDifettiComponenti();
 }

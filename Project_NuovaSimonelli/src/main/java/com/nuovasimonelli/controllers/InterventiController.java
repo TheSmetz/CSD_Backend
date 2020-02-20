@@ -35,6 +35,8 @@ public List<DifettiComponenti> getNumeroAzioni(){
 	return interventiRepository.findDifettiComponenti();
 }
 
+
+
 @PostMapping(value= {"/add","/add/"})
 public ResponseEntity<String> addInterventi(@RequestBody Interventi interventi) {
 	if(interventiRepository.existsById(interventi.getId())) {
