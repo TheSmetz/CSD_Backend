@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.nuovasimonelli.entities.Interventi;
 import com.nuovasimonelli.interfaces.ConteggioComponenti;
 import com.nuovasimonelli.interfaces.DifettiComponenti;
-import com.nuovasimonelli.interfaces.TipiDifettiComponenti;
 	
 public interface InterventiRepository extends JpaRepository<Interventi,Integer>{
 	Optional<Interventi> findById(int id);
@@ -19,7 +18,7 @@ public interface InterventiRepository extends JpaRepository<Interventi,Integer>{
     public List<Interventi> findInterventiLimited(int offset, int limit);
 	@Query(value="SELECT TOP 5 count(CODICE_DIFETTO) as conteggio, CODICE_COMPONENTE FROM COL_INTERVENTI group by CODICE_COMPONENTE order by conteggio DESC",nativeQuery=true)
 	public List<ConteggioComponenti> findConteggioComponenti();
-	
+		
 	@Query(value="SELECT COL_COMPONENTE.NOME AS NOMECOMPONENTE, COL_DIFETTO.NOME AS NOMEDIFETTO, PRIMODIFETTO, TOTALE FROM\r\n" + 
 			"(SELECT TOP 5 CODICE_COMPONENTE, count(CODICE_DIFETTO) as TOTALE\r\n" + 
 			"  FROM [QUALITY_CHECK].[dbo].[COL_INTERVENTI]\r\n" + 

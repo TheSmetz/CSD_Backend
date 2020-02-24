@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nuovasimonelli.entities.Interventi;
 import com.nuovasimonelli.interfaces.DifettiComponenti;
-import com.nuovasimonelli.interfaces.Linee;
 import com.nuovasimonelli.interfaces.TipiDifettiComponenti;
 import com.nuovasimonelli.repositories.InterventiRepository;
 

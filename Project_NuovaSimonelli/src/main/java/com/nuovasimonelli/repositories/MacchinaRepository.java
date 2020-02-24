@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.nuovasimonelli.entities.Macchina;
+import com.nuovasimonelli.interfaces.InterventiAnnuali;
 import com.nuovasimonelli.interfaces.InterventiLinee;
 import com.nuovasimonelli.interfaces.ProduttivitaLinee;
 import com.nuovasimonelli.interfaces.ProduttivitaOperai;
@@ -20,6 +21,13 @@ public interface MacchinaRepository extends JpaRepository<Macchina,Integer>{
 	
 	@Query(value="SELECT Linea,Count(Linea) as Produzione,Year(TimeE) as Anno FROM MACCHINA_POST_2013 m GROUP BY m.Linea, Year(m.TimeE) ORDER BY m.Linea,Anno", nativeQuery = true)
     public List<ProduzioneAnnuale> findAnnualProduction();
+	
+	@Query(value="SELECT Linea,Count(Linea) as Interventi,Year(TimeE) as Anno \r\n" + 
+			"FROM MACCHINA_POST_2013 m \r\n" + 
+			"where m.InterventiE not like ''\r\n" + 
+			"GROUP BY m.Linea, Year(m.TimeE) \r\n" + 
+			"ORDER BY m.Linea,Anno", nativeQuery = true)
+    public List<InterventiAnnuali> findAnnualIntervent();
 	
 	@Query(value="SELECT TOP 10 m.FirmaE, count(m.FirmaE) as Produttivita FROM MACCHINA_POST_2013 m GROUP BY m.FirmaE ORDER BY Produttivita DESC", nativeQuery = true)
 	public List<ProduttivitaOperai> findOperativesProduction();

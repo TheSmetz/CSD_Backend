@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nuovasimonelli.entities.Macchina;
+import com.nuovasimonelli.interfaces.InterventiAnnuali;
 import com.nuovasimonelli.interfaces.InterventiLinee;
 import com.nuovasimonelli.interfaces.Linee;
 import com.nuovasimonelli.interfaces.ProduttivitaLinee;
@@ -49,6 +50,20 @@ public class MacchinaController {
 		return lines;
 	}
 
+	@GetMapping(value = { "interventiAnnuali/", "interventiAnnuali" })
+	public int[][] getInterventiAnnuali() {
+		List<InterventiAnnuali> pa = macchinaRepository.findAnnualIntervent();
+		List<Integer> differentLines = getDifferentLinesIntervention(pa);
+		List<Integer> differentYears = getDifferentYearsIntervention(pa);
+		int[][] lines = new int[differentLines.size()][differentYears.size()];
+		for (int i = 0; i < lines.length; i++) {
+			for (int j = 0; j < lines[i].length; j++) {
+				lines[i][j] = getInterventi(differentYears.get(j), differentLines.get(i), pa);
+			}
+		}
+		return lines;
+	}
+	
 	@GetMapping(value = { "produttivitaOperai/", "produttivitaOperai" })
 	public List<ProduttivitaOperai> getOperativesProductive() {
 		return macchinaRepository.findOperativesProduction();
@@ -94,6 +109,30 @@ public class MacchinaController {
 
 		return years;
 	}
+	
+	public static List<Integer> getDifferentLinesIntervention(List<InterventiAnnuali> l) {
+		List<Integer> lines = new ArrayList<Integer>();
+
+		l.forEach(p -> {
+			if (!lines.contains(p.getLinea())) {
+				lines.add(p.getLinea());
+			}
+		});
+
+		return lines;
+	}
+
+	public static List<Integer> getDifferentYearsIntervention(List<InterventiAnnuali> l) {
+		List<Integer> years = new ArrayList<Integer>();
+
+		l.forEach(p -> {
+			if (!years.contains(p.getAnno())) {
+				years.add(p.getAnno());
+			}
+		});
+
+		return years;
+	}
 
 	@GetMapping(value = { "getYears/", "getYears" })
 	public List<String> getYears() {
@@ -118,16 +157,21 @@ public class MacchinaController {
 
 		return v[0];
 	}
+	
+	public static int getInterventi(int anno, int linea, List<InterventiAnnuali> l) {
 
-//@GetMapping(value= {"/",""})
-//public List<Macchina> getAllMacchina(){
-//	return macchinaRepository.findAll();
-//}
+		int[] v = { 0 };
 
-//@GetMapping(value= {"/grafoLineeAnno","/grafoLineeAnno/"})
-//public List<Integer> getLineeAnno(@RequestBody int year){
-//	return macchinaRepository.selectLineaWithCounterForYear(year);
-//}
+		l.forEach(p -> {
+			if (p.getAnno() == anno && p.getLinea() == linea) {
+				v[0] = p.getInterventi();
+
+			}
+		});
+
+		return v[0];
+	}
+
 
 	@PostMapping(value = { "/add", "/add/" })
 	public ResponseEntity<String> addMacchina(@RequestBody Macchina macchina) {
